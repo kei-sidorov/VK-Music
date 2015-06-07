@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F94BE2861B24B7AF004B811F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F94BE2851B24B7AF004B811F /* main.m */; };
+		F94BE2891B24B7AF004B811F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F94BE2881B24B7AF004B811F /* AppDelegate.m */; };
+		F94BE28C1B24B7AF004B811F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94BE28B1B24B7AF004B811F /* ViewController.m */; };
+		F94BE28F1B24B7AF004B811F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94BE28D1B24B7AF004B811F /* Main.storyboard */; };
+		F94BE2911B24B7AF004B811F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94BE2901B24B7AF004B811F /* Images.xcassets */; };
+		F94BE2941B24B7AF004B811F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94BE2921B24B7AF004B811F /* LaunchScreen.xib */; };
+		F94BE2A01B24B7AF004B811F /* VK_MusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F94BE29F1B24B7AF004B811F /* VK_MusicTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F94BE29A1B24B7AF004B811F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F94BE2781B24B7AF004B811F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F94BE27F1B24B7AF004B811F;
+			remoteInfo = "VK Music";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F94BE2801B24B7AF004B811F /* VK Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK Music.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F94BE2841B24B7AF004B811F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F94BE2851B24B7AF004B811F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F94BE2871B24B7AF004B811F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F94BE2881B24B7AF004B811F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F94BE28A1B24B7AF004B811F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F94BE28B1B24B7AF004B811F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F94BE28E1B24B7AF004B811F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F94BE2901B24B7AF004B811F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F94BE2931B24B7AF004B811F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F94BE2991B24B7AF004B811F /* VK MusicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VK MusicTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F94BE29E1B24B7AF004B811F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F94BE29F1B24B7AF004B811F /* VK_MusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VK_MusicTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F94BE27D1B24B7AF004B811F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F94BE2961B24B7AF004B811F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F94BE2771B24B7AF004B811F = {
+			isa = PBXGroup;
+			children = (
+				F94BE2821B24B7AF004B811F /* VK Music */,
+				F94BE29C1B24B7AF004B811F /* VK MusicTests */,
+				F94BE2811B24B7AF004B811F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F94BE2811B24B7AF004B811F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F94BE2801B24B7AF004B811F /* VK Music.app */,
+				F94BE2991B24B7AF004B811F /* VK MusicTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F94BE2821B24B7AF004B811F /* VK Music */ = {
+			isa = PBXGroup;
+			children = (
+				F94BE2871B24B7AF004B811F /* AppDelegate.h */,
+				F94BE2881B24B7AF004B811F /* AppDelegate.m */,
+				F94BE28A1B24B7AF004B811F /* ViewController.h */,
+				F94BE28B1B24B7AF004B811F /* ViewController.m */,
+				F94BE28D1B24B7AF004B811F /* Main.storyboard */,
+				F94BE2901B24B7AF004B811F /* Images.xcassets */,
+				F94BE2921B24B7AF004B811F /* LaunchScreen.xib */,
+				F94BE2831B24B7AF004B811F /* Supporting Files */,
+			);
+			path = "VK Music";
+			sourceTree = "<group>";
+		};
+		F94BE2831B24B7AF004B811F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F94BE2841B24B7AF004B811F /* Info.plist */,
+				F94BE2851B24B7AF004B811F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F94BE29C1B24B7AF004B811F /* VK MusicTests */ = {
+			isa = PBXGroup;
+			children = (
+				F94BE29F1B24B7AF004B811F /* VK_MusicTests.m */,
+				F94BE29D1B24B7AF004B811F /* Supporting Files */,
+			);
+			path = "VK MusicTests";
+			sourceTree = "<group>";
+		};
+		F94BE29D1B24B7AF004B811F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F94BE29E1B24B7AF004B811F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F94BE27F1B24B7AF004B811F /* VK Music */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F94BE2A31B24B7AF004B811F /* Build configuration list for PBXNativeTarget "VK Music" */;
+			buildPhases = (
+				F94BE27C1B24B7AF004B811F /* Sources */,
+				F94BE27D1B24B7AF004B811F /* Frameworks */,
+				F94BE27E1B24B7AF004B811F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VK Music";
+			productName = "VK Music";
+			productReference = F94BE2801B24B7AF004B811F /* VK Music.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F94BE2981B24B7AF004B811F /* VK MusicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F94BE2A61B24B7AF004B811F /* Build configuration list for PBXNativeTarget "VK MusicTests" */;
+			buildPhases = (
+				F94BE2951B24B7AF004B811F /* Sources */,
+				F94BE2961B24B7AF004B811F /* Frameworks */,
+				F94BE2971B24B7AF004B811F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F94BE29B1B24B7AF004B811F /* PBXTargetDependency */,
+			);
+			name = "VK MusicTests";
+			productName = "VK MusicTests";
+			productReference = F94BE2991B24B7AF004B811F /* VK MusicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F94BE2781B24B7AF004B811F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = yugs.ru;
+				TargetAttributes = {
+					F94BE27F1B24B7AF004B811F = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					F94BE2981B24B7AF004B811F = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = F94BE27F1B24B7AF004B811F;
+					};
+				};
+			};
+			buildConfigurationList = F94BE27B1B24B7AF004B811F /* Build configuration list for PBXProject "VK Music" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F94BE2771B24B7AF004B811F;
+			productRefGroup = F94BE2811B24B7AF004B811F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F94BE27F1B24B7AF004B811F /* VK Music */,
+				F94BE2981B24B7AF004B811F /* VK MusicTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F94BE27E1B24B7AF004B811F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F94BE28F1B24B7AF004B811F /* Main.storyboard in Resources */,
+				F94BE2941B24B7AF004B811F /* LaunchScreen.xib in Resources */,
+				F94BE2911B24B7AF004B811F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F94BE2971B24B7AF004B811F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F94BE27C1B24B7AF004B811F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F94BE28C1B24B7AF004B811F /* ViewController.m in Sources */,
+				F94BE2891B24B7AF004B811F /* AppDelegate.m in Sources */,
+				F94BE2861B24B7AF004B811F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F94BE2951B24B7AF004B811F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F94BE2A01B24B7AF004B811F /* VK_MusicTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F94BE29B1B24B7AF004B811F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F94BE27F1B24B7AF004B811F /* VK Music */;
+			targetProxy = F94BE29A1B24B7AF004B811F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F94BE28D1B24B7AF004B811F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F94BE28E1B24B7AF004B811F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F94BE2921B24B7AF004B811F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F94BE2931B24B7AF004B811F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F94BE2A11B24B7AF004B811F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F94BE2A21B24B7AF004B811F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F94BE2A41B24B7AF004B811F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "VK Music/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F94BE2A51B24B7AF004B811F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "VK Music/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F94BE2A71B24B7AF004B811F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "VK MusicTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VK Music.app/VK Music";
+			};
+			name = Debug;
+		};
+		F94BE2A81B24B7AF004B811F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "VK MusicTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VK Music.app/VK Music";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F94BE27B1B24B7AF004B811F /* Build configuration list for PBXProject "VK Music" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F94BE2A11B24B7AF004B811F /* Debug */,
+				F94BE2A21B24B7AF004B811F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F94BE2A31B24B7AF004B811F /* Build configuration list for PBXNativeTarget "VK Music" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F94BE2A41B24B7AF004B811F /* Debug */,
+				F94BE2A51B24B7AF004B811F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F94BE2A61B24B7AF004B811F /* Build configuration list for PBXNativeTarget "VK MusicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F94BE2A71B24B7AF004B811F /* Debug */,
+				F94BE2A81B24B7AF004B811F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F94BE2781B24B7AF004B811F /* Project object */;
+}
