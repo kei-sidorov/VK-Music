@@ -235,7 +235,7 @@
 }
 
 #pragma mark -
-#pragma mark VK SDK Delegate & Download Helpers
+#pragma mark VK SDK Delegate & Download Helper
 
 -(NSString *) keyForId: (NSString *) songId {
     return [NSString stringWithFormat:@"cell-%@", songId];
