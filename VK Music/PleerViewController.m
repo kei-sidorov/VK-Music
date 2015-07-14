@@ -266,7 +266,7 @@
 - (void) onAudioSessionEvent: (NSNotification *) notification
 {
     if ([notification.name isEqualToString:AVAudioSessionInterruptionNotification]) {
-    
+        
         if ([[notification.userInfo valueForKey:AVAudioSessionInterruptionTypeKey] isEqualToNumber:[NSNumber numberWithInt:AVAudioSessionInterruptionTypeBegan]]) {
             NSDictionary *info = [self.playback statusDictionary];
             

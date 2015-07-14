@@ -60,6 +60,8 @@
 
 @implementation ListTableViewController
 
+#pragma mark Getters and Setters
+
 - (void) setItems:(NSMutableArray *)items {
     _items = items;
     [self.tableView reloadData];
@@ -82,18 +84,70 @@
     }
 }
 
+#pragma mark -
+#pragma mark View Setup
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.downloadedObject = [NSMutableDictionary dictionary];
     self.storage = [[MusicStorage alloc] init];
     
+    [self addPlayerViewController];
+    
+    self.currentState = 0;
+    self.showingSearchResult = NO;
+    
+    [self addSegmentedControlToNavigationBar];
+    [self loadCachedSongs];
+    
+    [self setupRefreshControl];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [self setNeedsStatusBarAppearanceUpdate];
     
+    [self.searchDisplayController.searchResultsTableView registerClass:[VkMusicTableViewCell class] forCellReuseIdentifier:@"songItem"];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [VKSdk initializeWithDelegate:self andAppId:@"4369621"];
+    if (![VKSdk wakeUpSession])
+    {
+        [VKSdk authorize:@[@"audio"]];
+    }
+    
+    [self loadMyAudio];
+    
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void) setupRefreshControl {
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(loadMyAudio) forControlEvents:UIControlEventValueChanged];
+    _refreshControl.accessibilityLabel = @"Тяни вниз для обновления";
+    [self.tableView addSubview:_refreshControl];
+}
+
+-(void) loadCachedSongs {
+    self.cachedItems = [NSMutableArray array];
+    NSDictionary *chachedSongs = [self.storage getMusicList];
+    for (id key in chachedSongs) {
+        [self.cachedItems addObject:chachedSongs[key]];
+    }
+}
+
+- (void) setupSearch {
     self.searchQueue = [NSOperationQueue new];
     [self.searchQueue setMaxConcurrentOperationCount:1];
-    
+}
+
+- (void) addPlayerViewController {
     self.pleerController = [self.storyboard instantiateViewControllerWithIdentifier:@"pleerVC"];
     
     [self.pleerController willMoveToParentViewController:self];
@@ -103,28 +157,6 @@
     [self.pleerView addSubview:self.pleerController.view];
     [self.pleerController didMoveToParentViewController:self];
     self.pleerController.listController = self;
-    
-    self.currentState = 0;
-    self.showingSearchResult = NO;
-    
-    [self addSegmentedControlToNavigationBar];
-    [self loadCachedSongs];
-    
-    _refreshControl = [[UIRefreshControl alloc] init];
-    [_refreshControl addTarget:self action:@selector(loadMyAudio) forControlEvents:UIControlEventValueChanged];
-    _refreshControl.accessibilityLabel = @"Тяни вниз для обновления";
-    [self.tableView addSubview:_refreshControl];
-    
-    [self.searchDisplayController.searchResultsTableView registerClass:[VkMusicTableViewCell class] forCellReuseIdentifier:@"songItem"];
-    // Do any additional setup
-}
-
--(void) loadCachedSongs {
-    self.cachedItems = [NSMutableArray array];
-    NSDictionary *chachedSongs = [self.storage getMusicList];
-    for (id key in chachedSongs) {
-        [self.cachedItems addObject:chachedSongs[key]];
-    }
 }
 
 - (void) addSegmentedControlToNavigationBar {
@@ -157,6 +189,9 @@
         self.items = self.cachedItems;
     }
 }
+
+#pragma mark -
+#pragma mark Search Controller Deligate & Data Source
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
@@ -199,10 +234,8 @@
     [self.tableView scrollsToTop];
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
+#pragma mark -
+#pragma mark VK SDK Delegate & Download Helpers
 
 -(NSString *) keyForId: (NSString *) songId {
     return [NSString stringWithFormat:@"cell-%@", songId];
@@ -216,19 +249,6 @@
     }else{
         return -1.0;
     }
-    
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [VKSdk initializeWithDelegate:self andAppId:@"4369621"];
-    if (![VKSdk wakeUpSession])
-    {
-        [VKSdk authorize:@[@"audio"]];
-    }
-    
-    [self loadMyAudio];
     
 }
 
