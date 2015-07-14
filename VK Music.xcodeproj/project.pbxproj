@@ -21,6 +21,7 @@
 		F9A1A9211B29F2E600D91F27 /* DRCellSlideGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A1A91E1B29F2E600D91F27 /* DRCellSlideGestureRecognizer.m */; };
 		F9A1A9261B29FA8D00D91F27 /* RMDisplayLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A1A9231B29FA8D00D91F27 /* RMDisplayLabel.m */; };
 		F9A1A9271B29FA8D00D91F27 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A1A9251B29FA8D00D91F27 /* RMDownloadIndicator.m */; };
+		F9B64F821B54E23600A5A7A4 /* NSString+LSFormatAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B64F811B54E23600A5A7A4 /* NSString+LSFormatAdditions.m */; };
 		F9C8365F1B304EA000E22C96 /* MusicStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8365E1B304EA000E22C96 /* MusicStorage.m */; };
 		F9C836661B3338F800E22C96 /* PleerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C836651B3338F800E22C96 /* PleerViewController.m */; };
 		F9C836741B33BE3D00E22C96 /* LSPlaySliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8366A1B33BE3D00E22C96 /* LSPlaySliderView.m */; };
@@ -28,7 +29,6 @@
 		F9C836761B33BE3D00E22C96 /* NSString+LSFormatAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8366F1B33BE3D00E22C96 /* NSString+LSFormatAdditions.m */; };
 		F9C836771B33BE3D00E22C96 /* NSString+LSPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C836711B33BE3D00E22C96 /* NSString+LSPathAdditions.m */; };
 		F9C836781B33BE3D00E22C96 /* UIImage+LSAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C836731B33BE3D00E22C96 /* UIImage+LSAdditions.m */; };
-		F9C8367B1B33F83D00E22C96 /* NSString+LSFormatAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8367A1B33F83D00E22C96 /* NSString+LSFormatAdditions.m */; };
 		F9C8367E1B35EBE100E22C96 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9C8367D1B35EBE100E22C96 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +70,8 @@
 		F9A1A9231B29FA8D00D91F27 /* RMDisplayLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDisplayLabel.m; sourceTree = "<group>"; };
 		F9A1A9241B29FA8D00D91F27 /* RMDownloadIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDownloadIndicator.h; sourceTree = "<group>"; };
 		F9A1A9251B29FA8D00D91F27 /* RMDownloadIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDownloadIndicator.m; sourceTree = "<group>"; };
+		F9B64F801B54E23600A5A7A4 /* NSString+LSFormatAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LSFormatAdditions.h"; sourceTree = "<group>"; };
+		F9B64F811B54E23600A5A7A4 /* NSString+LSFormatAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LSFormatAdditions.m"; sourceTree = "<group>"; };
 		F9C8365D1B304EA000E22C96 /* MusicStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicStorage.h; sourceTree = "<group>"; };
 		F9C8365E1B304EA000E22C96 /* MusicStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicStorage.m; sourceTree = "<group>"; };
 		F9C836641B3338F800E22C96 /* PleerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PleerViewController.h; sourceTree = "<group>"; };
@@ -85,8 +87,6 @@
 		F9C836711B33BE3D00E22C96 /* NSString+LSPathAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LSPathAdditions.m"; sourceTree = "<group>"; };
 		F9C836721B33BE3D00E22C96 /* UIImage+LSAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LSAdditions.h"; sourceTree = "<group>"; };
 		F9C836731B33BE3D00E22C96 /* UIImage+LSAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LSAdditions.m"; sourceTree = "<group>"; };
-		F9C836791B33F83D00E22C96 /* NSString+LSFormatAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+LSFormatAdditions.h"; path = "../../../../Downloads/Ms/AVAssetResourceLoader-master 2/ResourceLoader/NSString+LSFormatAdditions.h"; sourceTree = "<group>"; };
-		F9C8367A1B33F83D00E22C96 /* NSString+LSFormatAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+LSFormatAdditions.m"; path = "../../../../Downloads/Ms/AVAssetResourceLoader-master 2/ResourceLoader/NSString+LSFormatAdditions.m"; sourceTree = "<group>"; };
 		F9C8367C1B35EBE100E22C96 /* VK Music.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "VK Music.entitlements"; sourceTree = "<group>"; };
 		F9C8367D1B35EBE100E22C96 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FA536FAA5C028716DCB8CB08 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -260,8 +260,8 @@
 			children = (
 				F9C8365D1B304EA000E22C96 /* MusicStorage.h */,
 				F9C8365E1B304EA000E22C96 /* MusicStorage.m */,
-				F9C836791B33F83D00E22C96 /* NSString+LSFormatAdditions.h */,
-				F9C8367A1B33F83D00E22C96 /* NSString+LSFormatAdditions.m */,
+				F9B64F801B54E23600A5A7A4 /* NSString+LSFormatAdditions.h */,
+				F9B64F811B54E23600A5A7A4 /* NSString+LSFormatAdditions.m */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -437,8 +437,8 @@
 				F9C836751B33BE3D00E22C96 /* NSObject+LSAdditions.m in Sources */,
 				F9A1A9161B29E52500D91F27 /* VkMusicTableViewCell.m in Sources */,
 				F9A1A91F1B29F2E600D91F27 /* DRCellSlideAction.m in Sources */,
-				F9C8367B1B33F83D00E22C96 /* NSString+LSFormatAdditions.m in Sources */,
 				F9C836771B33BE3D00E22C96 /* NSString+LSPathAdditions.m in Sources */,
+				F9B64F821B54E23600A5A7A4 /* NSString+LSFormatAdditions.m in Sources */,
 				F9C836741B33BE3D00E22C96 /* LSPlaySliderView.m in Sources */,
 				F9C8365F1B304EA000E22C96 /* MusicStorage.m in Sources */,
 				F94BE2891B24B7AF004B811F /* AppDelegate.m in Sources */,

@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
             endingLineNumber = "155"
-            landmarkName = "-setItemsWithType"
+            landmarkName = "-addPlayerViewController"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "410"
             endingLineNumber = "410"
-            landmarkName = "-downloadBlock"
+            landmarkName = "-reloadRowIfNeedForIndexPath:andSearchFlag:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "414"
             endingLineNumber = "414"
-            landmarkName = "-downloadBlock"
+            landmarkName = "-reloadRowIfNeedForIndexPath:andSearchFlag:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
