@@ -270,23 +270,78 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioSessionEvent:) name:AVAudioSessionInterruptionNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRouteChange:) name:AVAudioSessionRouteChangeNotification object:nil];
+    
+}
+
+- (void)handleRouteChange:(NSNotification*)notification
+{
+    NSInteger reason = [[[notification userInfo] objectForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
+    
+    switch (reason) {
+        case AVAudioSessionRouteChangeReasonOldDeviceUnavailable : {
+            
+            NSLog(@"unplug device");
+            NSDictionary *info = [self.playback statusDictionary];
+            self.restorePlayStateAfterScrubbingOrInterrupt = NO;
+            
+            if([info[AFSoundPlaybackStatus] integerValue] == AFSoundStatusPlaying){
+                NSLog(@"inerupt is playing man");
+                self.restorePlayStateAfterScrubbingOrInterrupt = YES;
+                [self.playback pause];
+                self.playPauseButton.selected = NO;
+            }
+            
+            break;
+        }
+        case AVAudioSessionRouteChangeReasonNewDeviceAvailable :
+            break;
+        case AVAudioSessionRouteChangeReasonOverride :
+            break;
+        case AVAudioSessionRouteChangeReasonCategoryChange :
+            break;
+        case AVAudioSessionRouteChangeReasonWakeFromSleep :
+            break;
+        case AVAudioSessionRouteChangeReasonNoSuitableRouteForCategory :
+            break;
+        case AVAudioSessionRouteChangeReasonRouteConfigurationChange :
+            break;
+        case AVAudioSessionRouteChangeReasonUnknown:
+        default:
+            break;
+    }
 }
 
 - (void) onAudioSessionEvent: (NSNotification *) notification
 {
+    
+    int interruptionType = [notification.userInfo[AVAudioSessionInterruptionTypeKey] intValue];
     if ([notification.name isEqualToString:AVAudioSessionInterruptionNotification]) {
         
         if ([[notification.userInfo valueForKey:AVAudioSessionInterruptionTypeKey] isEqualToNumber:[NSNumber numberWithInt:AVAudioSessionInterruptionTypeBegan]]) {
+            
+            NSLog(@"inerupt begin");
+            
             NSDictionary *info = [self.playback statusDictionary];
+            self.restorePlayStateAfterScrubbingOrInterrupt = NO;
             
             if([info[AFSoundPlaybackStatus] integerValue] == AFSoundStatusPlaying){
+                NSLog(@"inerupt is playing man");
                 self.restorePlayStateAfterScrubbingOrInterrupt = YES;
+                [self.playback pause];
+                self.playPauseButton.selected = NO;
             }
-        } else {
-            if (self.restorePlayStateAfterScrubbingOrInterrupt) {
-                [self.playback play];
-                self.restorePlayStateAfterScrubbingOrInterrupt = NO;
+        }else if (interruptionType == AVAudioSessionInterruptionTypeEnded) {
+            NSLog(@"inerupt end");
+            if ([notification.userInfo[AVAudioSessionInterruptionOptionKey] intValue] == AVAudioSessionInterruptionOptionShouldResume) {
+                NSLog(@"inerupt should resume");
+                if (self.restorePlayStateAfterScrubbingOrInterrupt) {
+                    NSLog(@"inerupt yes ints resume");
+                    [self.playback play];
+                    self.playPauseButton.selected = YES;
+                }
             }
+            self.restorePlayStateAfterScrubbingOrInterrupt = NO;
         }
     }
 }

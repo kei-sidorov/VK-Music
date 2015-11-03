@@ -255,7 +255,7 @@
 #pragma mark -
 #pragma mark Search Controller Deligate & Data Source
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     if  (![searchString isEqualToString:@""] && searchString.length > 3) {
         

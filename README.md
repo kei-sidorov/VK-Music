@@ -9,4 +9,4 @@ Things to do:
 
 Bugs to fix:
 * ~~playing after call~~
-* playing after system interrupts (play after second interrupt)
+* ~~playing after system interrupts (play after second interrupt)~~
