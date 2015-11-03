@@ -12,5 +12,6 @@
 
 - (void) needUpdateTableView;
 - (void) shuffleCurrentList;
+- (void) requestLirics: (NSNumber *) lyricsId;
 
 @end

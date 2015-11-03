@@ -193,6 +193,7 @@
             
             _currentId = [NSString stringWithFormat:@"%@", item[@"id"]];
             [self.listController needUpdateTableView];
+            [self.listController requestLirics:item[@"lyrics_id"]];
             self.playPauseButton.selected = YES;
         });
     });

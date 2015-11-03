@@ -14,6 +14,7 @@
 #import "PleerViewController.h"
 #import <VKSdk.h>
 #import <AFNetworking/AFNetworking.h>
+#import "LyricsViewController.h"
 
 @interface NSMutableArray (Shuffling)
 - (void)shuffle;
@@ -48,6 +49,11 @@
 @property (nonatomic, weak) IBOutlet UIView *pleerView;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+
+@property (nonatomic, strong) NSString *currentLyrics;
+
+@property (nonatomic, strong) UIBarButtonItem *editBarButton;
+@property (nonatomic, strong) UIBarButtonItem *liricsBarButton;
 
 @property (nonatomic, strong) NSTimer *timer;
 
@@ -110,6 +116,12 @@
     [self.searchDisplayController.searchResultsTableView registerClass:[VkMusicTableViewCell class] forCellReuseIdentifier:@"songItem"];
     
     self.searchQueue = [[NSOperationQueue alloc] init];
+    
+    _editBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reorder"] style:UIBarButtonItemStyleDone target:self action:@selector(setEdit)];
+    _editBarButton.tintColor = [UIColor whiteColor];
+    
+    _liricsBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Lyrics"] style:UIBarButtonItemStyleDone target:self action:@selector(showLyrics)];
+    _liricsBarButton.tintColor = [UIColor whiteColor];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -183,14 +195,56 @@
 
 - (void) setItemsWithType {
     [self.tableView setEditing:NO animated:NO];
+    NSMutableArray *arrItems = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
+    
     if (self.currentState == 0) {
         self.items = [NSMutableArray arrayWithArray: self.myPageItems];
+        
+        [arrItems removeObject:_editBarButton];
+        
         self.navigationItem.rightBarButtonItem = nil;
     }else{
         self.items = self.cachedItems;
-        UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reorder"] style:UIBarButtonItemStyleDone target:self action:@selector(setEdit)];
-        edit.tintColor = [UIColor whiteColor];
-        self.navigationItem.rightBarButtonItem = edit;
+        
+        [arrItems addObject:_editBarButton];
+    }
+    
+    self.navigationItem.rightBarButtonItems = [arrItems copy];
+}
+
+- (void) showLyrics {
+    
+    LyricsViewController *lyricsVC = (LyricsViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"lyricsVC"];
+    lyricsVC.lyricsString = self.currentLyrics;
+    
+    [self.navigationController pushViewController:lyricsVC animated:YES];
+    
+}
+
+- (void) requestLirics: (NSNumber *) lyricsId {
+
+    NSMutableArray *arrItems = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
+    [arrItems removeObject:_liricsBarButton];
+    self.navigationItem.rightBarButtonItems = [arrItems copy];
+    self.currentLyrics = nil;
+
+    if ([lyricsId integerValue] > 0)
+    {
+    
+        VKRequest *audioReq = [VKApi requestWithMethod:@"audio.getLyrics" andParameters:@{@"lyrics_id": lyricsId} andHttpMethod:@"GET"];
+        [audioReq executeWithResultBlock:^(VKResponse *response) {
+            
+            NSMutableArray *arrItems = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
+            [arrItems addObject:_liricsBarButton];
+            self.navigationItem.rightBarButtonItems = [arrItems copy];
+            
+            self.currentLyrics = ((NSDictionary *) response.json)[@"text"];
+            NSLog(@"%@", self.currentLyrics);
+            
+        } errorBlock:^(NSError *error) {
+            NSLog(@"Error get");
+        }];
+        
     }
 }
 

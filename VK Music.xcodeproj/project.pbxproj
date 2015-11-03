@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C8B76DE85C825A1B2E83D191 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5A2D1CE9A72600CB9731F6 /* libPods.a */; };
+		F943DDEA1BE879C900D42C20 /* LyricsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F943DDE91BE879C900D42C20 /* LyricsViewController.m */; };
 		F94BE2861B24B7AF004B811F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F94BE2851B24B7AF004B811F /* main.m */; };
 		F94BE2891B24B7AF004B811F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F94BE2881B24B7AF004B811F /* AppDelegate.m */; };
 		F94BE28F1B24B7AF004B811F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94BE28D1B24B7AF004B811F /* Main.storyboard */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		1267F94D65D72E842D3D8B9A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EC5A2D1CE9A72600CB9731F6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F943DDE81BE879C900D42C20 /* LyricsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricsViewController.h; sourceTree = "<group>"; };
+		F943DDE91BE879C900D42C20 /* LyricsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricsViewController.m; sourceTree = "<group>"; };
 		F94BE2801B24B7AF004B811F /* VK Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK Music.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94BE2841B24B7AF004B811F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F94BE2851B24B7AF004B811F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				F9A1A9121B25643600D91F27 /* ListTableViewController.m */,
 				F9C836641B3338F800E22C96 /* PleerViewController.h */,
 				F9C836651B3338F800E22C96 /* PleerViewController.m */,
+				F943DDE81BE879C900D42C20 /* LyricsViewController.h */,
+				F943DDE91BE879C900D42C20 /* LyricsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 				F9A1A9261B29FA8D00D91F27 /* RMDisplayLabel.m in Sources */,
 				F9A1A9271B29FA8D00D91F27 /* RMDownloadIndicator.m in Sources */,
 				F9A1A9211B29F2E600D91F27 /* DRCellSlideGestureRecognizer.m in Sources */,
+				F943DDEA1BE879C900D42C20 /* LyricsViewController.m in Sources */,
 				F9C836661B3338F800E22C96 /* PleerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
