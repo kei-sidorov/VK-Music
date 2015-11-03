@@ -197,16 +197,15 @@
     [self.tableView setEditing:NO animated:NO];
     NSMutableArray *arrItems = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
     
+    [arrItems removeObject:_editBarButton];
     if (self.currentState == 0) {
         self.items = [NSMutableArray arrayWithArray: self.myPageItems];
-        
-        [arrItems removeObject:_editBarButton];
         
         self.navigationItem.rightBarButtonItem = nil;
     }else{
         self.items = self.cachedItems;
         
-        [arrItems addObject:_editBarButton];
+        [arrItems insertObject:_editBarButton atIndex:0];
     }
     
     self.navigationItem.rightBarButtonItems = [arrItems copy];
@@ -239,7 +238,6 @@
             self.navigationItem.rightBarButtonItems = [arrItems copy];
             
             self.currentLyrics = ((NSDictionary *) response.json)[@"text"];
-            NSLog(@"%@", self.currentLyrics);
             
         } errorBlock:^(NSError *error) {
             NSLog(@"Error get");
