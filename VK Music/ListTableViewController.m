@@ -55,6 +55,7 @@
 
 @property (nonatomic) NSInteger currentState;
 @property (nonatomic) BOOL showingSearchResult;
+@property (nonatomic) BOOL needUpdateTable;
 
 @end
 
@@ -107,6 +108,8 @@
     [self setNeedsStatusBarAppearanceUpdate];
     
     [self.searchDisplayController.searchResultsTableView registerClass:[VkMusicTableViewCell class] forCellReuseIdentifier:@"songItem"];
+    
+    self.searchQueue = [[NSOperationQueue alloc] init];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -135,11 +138,7 @@
 }
 
 -(void) loadCachedSongs {
-    self.cachedItems = [NSMutableArray array];
-    NSDictionary *chachedSongs = [self.storage getMusicList];
-    for (id key in chachedSongs) {
-        [self.cachedItems addObject:chachedSongs[key]];
-    }
+    self.cachedItems = [NSMutableArray arrayWithArray: [self.storage getMusicList]];
 }
 
 - (void) setupSearch {
@@ -183,11 +182,20 @@
 }
 
 - (void) setItemsWithType {
+    [self.tableView setEditing:NO animated:NO];
     if (self.currentState == 0) {
         self.items = [NSMutableArray arrayWithArray: self.myPageItems];
+        self.navigationItem.rightBarButtonItem = nil;
     }else{
         self.items = self.cachedItems;
+        UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reorder"] style:UIBarButtonItemStyleDone target:self action:@selector(setEdit)];
+        edit.tintColor = [UIColor whiteColor];
+        self.navigationItem.rightBarButtonItem = edit;
     }
+}
+
+-(void) setEdit {
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
 }
 
 #pragma mark -
@@ -206,6 +214,7 @@
                                                                                            @"count": @"30"
                                                                                            } andHttpMethod:@"GET"];
             [audioReq executeWithResultBlock:^(VKResponse *response) {
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.searchResults = [NSMutableArray arrayWithArray: ((NSDictionary *) response.json)[@"items"]];
                     [controller.searchResultsTableView reloadData];
@@ -341,7 +350,7 @@
     NSString *itemId = [NSString stringWithFormat:@"%@", item[@"id"]];
     
     float dlProgress = [self downloadProgressForCellWithId:itemId];
-    BOOL inStore = [self.storage isInStorage:[itemId integerValue]];
+    BOOL inStore = [self.storage isInStorage:itemId];
     BOOL nowPlaing = [self.pleerController.currentId isEqualToString:itemId];
     
     cell.indicator2.hidden = dlProgress < 0 || dlProgress == 1.0;
@@ -394,6 +403,17 @@
     return (tableView != self.searchDisplayController.searchResultsTableView && self.currentState == 1);
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [self.storage swipeSongs:sourceIndexPath.row to:destinationIndexPath.row];
+    [self loadCachedSongs];
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *item = self.cachedItems[indexPath.row];
@@ -412,6 +432,18 @@
             [self.searchDisplayController.searchResultsTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
     });
+}
+
+- (void) updateTableStatus
+{
+    [self.tableView reloadData];
+    [self.searchDisplayController.searchResultsTableView reloadData];
+    
+    NSLog(@"update! %@", (self.needUpdateTable) ? @"1" : @"0");
+    
+    if (self.needUpdateTable) {
+        [self performSelector:@selector(updateTableStatus) withObject:nil afterDelay:0.5];
+    }
 }
 
 
@@ -434,16 +466,22 @@
         operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
         
         [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-            
+
+            self.needUpdateTable = YES;
             NSNumber *num = [NSNumber numberWithDouble: (float) totalBytesRead / totalBytesExpectedToRead];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.downloadedObject setValue:num forKey:[self keyForId:item[@"id"]]];
             });
-            [self reloadRowIfNeedForIndexPath:indexPath andSearchFlag:isFromSearch];
+//            [self reloadRowIfNeedForIndexPath:indexPath andSearchFlag:isFromSearch];
             
         }];
         
+        self.needUpdateTable = YES;
+        [self updateTableStatus];
+        
         [operation setCompletionBlock:^{
+            
+            self.needUpdateTable = NO;
             
             NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:item];
             [dict setValue:filePath forKey:@"fileName"];

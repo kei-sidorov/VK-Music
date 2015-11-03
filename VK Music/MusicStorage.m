@@ -9,27 +9,26 @@
 #import "MusicStorage.h"
 
 #define MUSIC_KEY @"musicList"
+//#define MUSIC_KEY @"musicListM" tima salomon
+
 
 @interface MusicStorage()
 
-@property (nonatomic, strong) NSDictionary *songs;
+@property (nonatomic, strong) NSArray *songs;
 
 @end
 
 @implementation MusicStorage
 @synthesize songs = _songs;
 
--(void) setSongs:(NSDictionary *)songs {
+-(void) setSongs:(NSArray *)songs {
     _songs = songs;
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:songs forKey:MUSIC_KEY];
 }
 
--(NSDictionary *) songs {
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-   //[userDefaults setValue:nil forKey:MUSIC_KEY];
+-(NSArray *) songs {
     
     if (_songs == nil) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -40,43 +39,61 @@
     
 }
 
-- (NSDictionary *) getMusicList {
+- (NSArray *) getMusicList {
     return self.songs;
 }
 
 - (void) deleteSongWithId: (NSString *) string {
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary: self.songs];
-    NSString *key = [self keyForSongWithId: [string integerValue]];
+    NSMutableArray *tmpArray = [NSMutableArray array];
     
-    NSError *error;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager removeItemAtPath:self.songs[key][@"fileName"] error:&error];
-    
-    [dict setValue:nil forKey:key];
-    [dict removeObjectForKey:key];
-    self.songs = dict;
+    for(NSDictionary *dict in self.songs)
+    {
+        NSNumber *songId = dict[@"id"];
+        if ([songId integerValue] == [string integerValue]) {
+            NSError *error;
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            [fileManager removeItemAtPath:dict[@"fileName"] error:&error];
+        }else{
+            [tmpArray addObject:dict];
+        }
+    }
+
+    self.songs = tmpArray;
 }
 
 - (void) addMusic: (NSDictionary *) info {
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary: self.songs];
-    NSString *key = [self keyForSongWithId: [info[@"id"] integerValue]];
+    NSMutableArray *tmpArray = [NSMutableArray arrayWithArray: self.songs];
     
-    [dict setValue:info forKey:key];
-    self.songs = dict;
+    [tmpArray insertObject:info atIndex:0];
+    self.songs = tmpArray;
     
 }
 
-- (BOOL) isInStorage: (NSInteger) songId {
-    NSString *key = [self keyForSongWithId:songId];
-    BOOL result = (self.songs[key] != nil);
+- (BOOL) isInStorage: (NSString *) songId {
     
-    return result;
+    for(NSDictionary *dict in self.songs)
+    {
+        NSString *strId = [NSString stringWithFormat:@"%@", dict[@"id"]];
+        if ([strId isEqualToString:songId])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
-- (NSString *) keyForSongWithId: (NSInteger) songId {
-    return [NSString stringWithFormat:@"song-%d", songId];
+- (void) swipeSongs: (NSInteger) from to: (NSInteger) to
+{
+    NSMutableArray *tmpArray = [NSMutableArray arrayWithArray: self.songs];
+    
+    NSDictionary *dict = tmpArray[from];
+    [tmpArray removeObjectAtIndex:from];
+    [tmpArray insertObject:dict atIndex:to];
+    
+    self.songs = tmpArray;
 }
 
 @end

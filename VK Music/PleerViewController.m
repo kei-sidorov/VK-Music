@@ -152,43 +152,51 @@
     self.timer = nil;
     
     NSDictionary *item = self.items[index];
-    AFSoundItem *soundItem;
-    if (item[@"fileName"] != nil) {
-        NSString *url = item[@"fileName"];
-        soundItem = [[AFSoundItem alloc] initWithLocalResource:[url lastPathComponent] atPath:nil];
-    }else{
-        soundItem = [[AFSoundItem alloc] initWithStreamingURL:[NSURL URLWithString:item[@"url"]]];
-    }
     
-    self.playback = [[AFSoundPlayback alloc] initWithItem:soundItem];
-    
-    [self.playback play];
-    self.currentIndex = index;
-    
-    [self getTimer];
-    
-    Class playingInfoCenter = NSClassFromString(@"MPNowPlayingInfoCenter");
-    
-    if (playingInfoCenter) {
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        NSMutableDictionary *songInfo = [[NSMutableDictionary alloc] init];
+        AFSoundItem *soundItem;
         
-        [songInfo setObject:item[@"title"] forKey:MPMediaItemPropertyTitle];
-        [songInfo setObject:item[@"artist"] forKey:MPMediaItemPropertyArtist];
-        
-        if (soundItem.artwork != nil) {
-            MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:soundItem.artwork];
-            [songInfo setObject:albumArt forKey:MPMediaItemPropertyArtwork];
+        if (item[@"fileName"] != nil) {
+            NSString *url = item[@"fileName"];
+            soundItem = [[AFSoundItem alloc] initWithLocalResource:[url lastPathComponent] atPath:nil];
+        }else{
+            soundItem = [[AFSoundItem alloc] initWithStreamingURL:[NSURL URLWithString:item[@"url"]]];
         }
         
-        [songInfo setObject:[NSNumber numberWithInteger:soundItem.duration] forKey:MPMediaItemPropertyPlaybackDuration];
-        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:songInfo];
+        self.playback = [[AFSoundPlayback alloc] initWithItem:soundItem];
         
-    }
-    
-    _currentId = [NSString stringWithFormat:@"%@", item[@"id"]];
-    [self.listController needUpdateTableView];
-    self.playPauseButton.selected = YES;
+        dispatch_async( dispatch_get_main_queue(), ^{
+            [self.playback play];
+            self.currentIndex = index;
+            
+            [self getTimer];
+            
+            Class playingInfoCenter = NSClassFromString(@"MPNowPlayingInfoCenter");
+            
+            if (playingInfoCenter) {
+                
+                NSMutableDictionary *songInfo = [[NSMutableDictionary alloc] init];
+                
+                [songInfo setObject:item[@"title"] forKey:MPMediaItemPropertyTitle];
+                [songInfo setObject:item[@"artist"] forKey:MPMediaItemPropertyArtist];
+                
+                if (soundItem.artwork != nil) {
+                    MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:soundItem.artwork];
+                    [songInfo setObject:albumArt forKey:MPMediaItemPropertyArtwork];
+                }
+                
+                [songInfo setObject:[NSNumber numberWithInteger:soundItem.duration] forKey:MPMediaItemPropertyPlaybackDuration];
+                [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:songInfo];
+                
+            }
+            
+            _currentId = [NSString stringWithFormat:@"%@", item[@"id"]];
+            [self.listController needUpdateTableView];
+            self.playPauseButton.selected = YES;
+        });
+    });
+
 }
 
 - (void) getTimer {

@@ -10,10 +10,11 @@
 
 @interface MusicStorage : NSObject
 
--(NSDictionary *) songs;
-- (NSDictionary *) getMusicList;
+- (NSArray *) songs;
+- (NSArray *) getMusicList;
 - (void) addMusic: (NSDictionary *) info;
-- (BOOL) isInStorage: (NSInteger) songId;
+- (BOOL) isInStorage: (NSString *) songId;
 - (void) deleteSongWithId: (NSString *) string;
+- (void) swipeSongs: (NSInteger)from to:(NSInteger) to;
 
 @end
