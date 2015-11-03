@@ -4,9 +4,9 @@ App for download and listen music from VK.com
 Things to do:
 * playlists
 * ~~reordering in downloads~~
-* lyrics of now playing
+* ~~lyrics of now playing~~
 * artwork of now playing
 
 Bugs to fix:
 * ~~playing after call~~
-* playing after system interrupts
+* playing after system interrupts (play after second interrupt)
